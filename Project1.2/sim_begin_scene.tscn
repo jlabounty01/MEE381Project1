@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmp0qw4fjxrmv"]
+
+[ext_resource type="Script" path="res://SimBeginScene.cs" id="1_vk8uo"]
+[ext_resource type="PackedScene" uid="uid://dgxwvehspcn4u" path="res://Models381/SpringModel.tscn" id="2_3ytpt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8udnt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k7av1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_o6215"]
+
+[node name="SimBeginScene" type="Node3D"]
+script = ExtResource("1_vk8uo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.726802, 0.686847, 0, -0.686847, 0.726802, 0, 2.2857, 2.10991)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8udnt")
+
+[node name="Anchor" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.15475, 0)
+mesh = SubResource("BoxMesh_k7av1")
+
+[node name="Ball1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.479992, 0)
+mesh = SubResource("SphereMesh_o6215")
+
+[node name="SpringModel" parent="." instance=ExtResource("2_3ytpt")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.875776, -0.0537322, 0.479719, 0.00436475, 0.994626, 0.103437, -0.482699, -0.0884942, 0.871304, 0.848646, 0.493265, 1.6741)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 186.0
+offset_bottom = 113.0
+
+[node name="keLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Kinetic: 
+"
+
+[node name="peLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Potential: 
+"
+
+[node name="TotLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Total: 
+"
